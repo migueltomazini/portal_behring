@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direções de estilo — Portal Behring</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; font-family:"DM Sans",sans-serif; background:#F5F5F7; color:#2B2B33; line-height:1.5 }
+  header { background:#20165E; color:#fff; padding:32px 24px }
+  header .in, main { max-width:1280px; margin:0 auto }
+  header h1 { margin:0 0 6px; font-size:30px } header p { margin:0; color:#D6D3EE; max-width:820px }
+  main { padding:28px 24px 56px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px }
+  article { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 1px 3px rgba(32,22,94,.1) }
+  .frame { height:400px; overflow:hidden; border-bottom:1px solid #E4E4EA; position:relative; background:#fff }
+  .frame iframe { width:1440px; height:1000px; border:0; transform:scale(.43); transform-origin:0 0; pointer-events:none }
+  .body { padding:20px 24px 24px }
+  h2 { margin:0 0 4px; color:#20165E; font-size:22px } .tag { font-size:14px; color:#5E5E68; margin:0 0 12px }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:14px }
+  .cols h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 4px }
+  .cols ul { margin:0; padding-left:18px }
+  .pro h3 { color:#007036 } .con h3 { color:#B42318 }
+  a.open { display:inline-flex; margin-top:16px; min-height:44px; align-items:center; padding:0 18px; border-radius:999px; background:#20165E; color:#fff; font-weight:700; text-decoration:none }
+  @media (max-width: 900px) { main { grid-template-columns:1fr } .frame iframe { transform:scale(.25) } .frame { height:250px } }
+</style>
+</head>
+<body>
+<header><div class="in"><h1>Direções de estilo para o Portal Behring</h1>
+<p>A mesma tela (Início, cenário "correção solicitada") em quatro estilos, todos com o logo oficial e as cores do site. Os quatro passam na verificação automática WCAG 2.2 AA (axe-core). A estrutura e o conteúdo são os mesmos; muda a linguagem visual.</p></div></header>
+<main>
+  <article>
+    <div class="frame"><iframe src="a-geometria.html" title="Prévia do estilo A" tabindex="-1"></iframe></div>
+    <div class="body"><h2>A · Geometria do B</h2><p class="tag">Institucional refinado. A forma do logo (lado reto + lado arredondado) vira a linguagem dos botões, cartões e marcadores; cada programa ganha uma faixa com a sua cor.</p>
+      <div class="cols"><div class="pro"><h3>Prós</h3><ul><li>Mais próximo do site e da marca</li><li>Personalidade própria sem perder sobriedade</li><li>Fácil de manter consistente em todas as telas</li></ul></div>
+      <div class="con"><h3>Contras</h3><ul><li>Menos "uau" que B e D</li><li>Cantos assimétricos exigem cuidado em componentes pequenos</li></ul></div></div>
+      <a class="open" href="a-geometria.html">Abrir em tela cheia</a></div>
+  </article>
+  <article>
+    <div class="frame"><iframe src="b-programa.html" title="Prévia do estilo B" tabindex="-1"></iframe></div>
+    <div class="body"><h2>B · Cor do programa</h2><p class="tag">Editorial e vibrante, como as páginas de programa do site: azul elétrico do Scholars, roxo do Academy, preto do Founders, barras ciano e tipografia grande.</p>
+      <div class="cols"><div class="pro"><h3>Prós</h3><ul><li>Mais marcante e jovem</li><li>A cor indica em que programa você está</li><li>Grade em blocos (bento) organiza bem a informação</li></ul></div>
+      <div class="con"><h3>Contras</h3><ul><li>Muita cor pode competir com os estados (vermelho, amarelo)</li><li>Exige variações por programa em todas as telas</li></ul></div></div>
+      <a class="open" href="b-programa.html">Abrir em tela cheia</a></div>
+  </article>
+  <article>
+    <div class="frame"><iframe src="c-painel.html" title="Prévia do estilo C" tabindex="-1"></iframe></div>
+    <div class="body"><h2>C · Painel de controle</h2><p class="tag">Aplicativo de trabalho: menu lateral azul-marinho, indicadores no topo, tarefas em tabela e atividade recente. Inspirado em ferramentas de gestão e em padrões como a lista de tarefas do GOV.UK.</p>
+      <div class="cols"><div class="pro"><h3>Prós</h3><ul><li>Mais eficiente para quem usa com frequência (Rafael, Camila)</li><li>Muita informação escaneável de uma vez</li><li>Escala bem para a visão da equipe interna</li></ul></div>
+      <div class="con"><h3>Contras</h3><ul><li>Mais frio e "corporativo"</li><li>Pode intimidar usuários iniciantes (Davi)</li><li>No celular, o menu lateral precisa virar barra inferior</li></ul></div></div>
+      <a class="open" href="c-painel.html">Abrir em tela cheia</a></div>
+  </article>
+  <article>
+    <div class="frame"><iframe src="d-jornada.html" title="Prévia do estilo D" tabindex="-1"></iframe></div>
+    <div class="body"><h2>D · Jornada</h2><p class="tag">Amigável e leve: a candidatura como uma trilha com marcos, cartões de "próximos passos", progresso percentual e conquistas. Usa os tons claros do site (lilás e ciano), inspirado no Academy.</p>
+      <div class="cols"><div class="pro"><h3>Prós</h3><ul><li>Acolhedor para quem nunca participou de um processo (Davi)</li><li>Progresso e etapa atual muito evidentes</li><li>Reduz a ansiedade durante a espera</li></ul></div>
+      <div class="con"><h3>Contras</h3><ul><li>Pode parecer infantil para Rafael (24, fundador)</li><li>O percentual de progresso é uma estimativa e pode gerar expectativa</li><li>Ocupa mais espaço vertical</li></ul></div></div>
+      <a class="open" href="d-jornada.html">Abrir em tela cheia</a></div>
+  </article>
+</main>
+</body></html>

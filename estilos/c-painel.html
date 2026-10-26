@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estilo C — Painel de controle</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* Direção C: aplicativo de trabalho. Navegação lateral fixa em azul-marinho, informação densa
+     e escaneável, indicadores no topo e lista de tarefas em formato de tabela. */
+  :root { --navy:#20165E; --navy-2:#2E2380; --petrol:#00799E; --text:#2B2B33; --muted:#5E5E68; --line:#E4E4EA; --bg:#F7F7FA;
+          --fix:#B42318; --fix-bg:#FDECEA; --todo:#7A4F00; --todo-bg:#FFF4D6; --green:#007036; --green-bg:#E6F4EA; --wait-bg:#EEF0F8; }
+  * { box-sizing:border-box } body { margin:0; font-family:"DM Sans",sans-serif; color:var(--text); background:var(--bg); font-size:15px; line-height:1.5; display:grid; grid-template-columns:260px 1fr; min-height:100vh }
+  .ico { width:20px; height:20px; flex:none } .ico-l { width:22px; height:22px; flex:none }
+  aside { background:var(--navy); color:#fff; padding:24px 16px; display:flex; flex-direction:column; gap:4px }
+  aside img { height:38px; margin:0 8px 28px; align-self:flex-start }
+  aside a { color:#D8D5F0; text-decoration:none; display:flex; align-items:center; gap:12px; min-height:44px; padding:0 12px; border-radius:10px; font-weight:500 }
+  aside a.on { background:var(--navy-2); color:#fff; box-shadow:inset 3px 0 0 #00A2D3 }
+  aside .n { margin-left:auto; background:#fff; color:var(--navy); font-size:12px; font-weight:700; border-radius:999px; padding:0 8px }
+  aside .sec { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#A9A4D6; margin:20px 12px 6px }
+  aside .prog { color:#fff; } aside .prog .sw { width:10px; height:10px; border-radius:3px }
+  aside .me { margin-top:auto; display:flex; align-items:center; gap:10px; padding:12px; border-top:1px solid #3A3088 }
+  .av { width:36px; height:36px; border-radius:50%; background:#00A2D3; color:var(--navy); display:grid; place-items:center; font-weight:700 }
+  .main { padding:0 }
+  .topbar { height:64px; background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:16px; padding:0 32px }
+  .search { flex:1; max-width:420px; display:flex; align-items:center; gap:8px; border:1px solid #C9C9D3; border-radius:10px; padding:0 12px; min-height:40px; color:var(--muted) }
+  .content { padding:28px 32px }
+  h1 { margin:0; font-size:26px; color:var(--navy) } .sub { color:var(--muted); margin:2px 0 20px }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px }
+  .kpi { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 18px }
+  .kpi .l { font-size:13px; color:var(--muted); display:flex; align-items:center; gap:6px } .kpi .v { font-size:30px; font-weight:700; color:var(--navy); line-height:1.2 }
+  .kpi.alert { border-color:#F2B8B5; background:var(--fix-bg) } .kpi.alert .v { color:var(--fix) }
+  .panel { background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:20px }
+  .panel h2 { font-size:16px; margin:0; padding:14px 18px; border-bottom:1px solid var(--line); color:var(--navy); display:flex; justify-content:space-between; align-items:center }
+  table { width:100%; border-collapse:collapse } th { text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); padding:10px 18px; background:#FAFAFC }
+  td { padding:14px 18px; border-top:1px solid var(--line); vertical-align:middle }
+  .st { white-space:nowrap; display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:13px; padding:3px 10px; border-radius:6px }
+  .s-fix { background:var(--fix-bg); color:var(--fix) } .s-todo { background:var(--todo-bg); color:var(--todo) } .s-done { background:var(--green-bg); color:var(--green) } .s-wait { background:var(--wait-bg); color:var(--navy) }
+  .btn { display:inline-flex; align-items:center; gap:6px; min-height:40px; padding:0 16px; border-radius:8px; font:inherit; font-weight:700; text-decoration:none; border:0 }
+  .b-primary { background:var(--navy); color:#fff } .b-danger { background:var(--fix); color:#fff } .b-line { box-shadow:inset 0 0 0 1.5px var(--petrol); color:var(--petrol); background:#fff }
+  .cols { display:grid; grid-template-columns:1.6fr 1fr; gap:20px }
+  .steps { list-style:none; margin:0; padding:14px 18px }
+  .steps li { display:grid; grid-template-columns:28px 1fr auto; gap:10px; align-items:center; padding:8px 0 }
+  .steps .d { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:700; border:2px solid #A0A0AB; color:var(--muted) }
+  .steps .ok .d { background:var(--green); border-color:var(--green); color:#fff } .steps .now .d { background:#F5B800; border-color:var(--todo); color:var(--navy) }
+  .muted { color:var(--muted); font-size:13px } a { color:var(--petrol) }
+</style>
+</head>
+<body>
+<aside aria-label="Navegação">
+  <img src="../assets/logo-fundacao-behring-branco.png" alt="Fundação Behring">
+  <a class="on" href="#"><i data-i="home"></i>Início</a><a href="#"><i data-i="grid"></i>Programas</a><a href="#"><i data-i="folder"></i>Documentos<span class="n">3</span></a><a href="#"><i data-i="bell"></i>Avisos<span class="n">6</span></a><a href="#"><i data-i="user"></i>Perfil</a>
+  <div class="sec">Seus processos</div>
+  <a class="prog" href="#"><span class="sw" style="background:#3D8BFF"></span>Scholars 2027</a><a class="prog" href="#"><span class="sw" style="background:#B48EE6"></span>Academy 2024–26</a>
+  <div class="me"><span class="av">KA</span><div><strong>Kira Almeida</strong><div style="font-size:12px;color:#C4C0E6">Candidata</div></div></div>
+</aside>
+<div class="main">
+  <div class="topbar"><div class="search"><i data-i="search"></i>Buscar documentos, programas, avisos…</div><span style="margin-left:auto" class="muted">Portal do Aluno &amp; Candidato</span></div>
+  <div class="content">
+    <h1>Bom dia, Kira</h1><p class="sub">Quinta-feira, 06/11/2026 · Behring Scholars 2027 em análise documental</p>
+    <div class="kpis">
+      <div class="kpi alert"><div class="l"><i data-i="alert"></i>Correções</div><div class="v">1</div><div class="muted" style="color:var(--fix)">até 13/11</div></div>
+      <div class="kpi"><div class="l"><i data-i="clock"></i>Para fazer</div><div class="v">2</div><div class="muted">próximo: 13/11</div></div>
+      <div class="kpi"><div class="l"><i data-i="hourglass"></i>Com a Fundação</div><div class="v">0</div><div class="muted">nada em análise</div></div>
+      <div class="kpi"><div class="l"><i data-i="flag"></i>Etapa atual</div><div class="v" style="font-size:20px;padding:6px 0">Análise doc.</div><div class="muted">2 de 5</div></div>
+    </div>
+    <div class="cols">
+      <section class="panel"><h2>Para fazer <a href="#" style="font-size:14px;font-weight:500">Ver todos</a></h2>
+        <table><thead><tr><th>Tarefa</th><th>Programa</th><th>Prazo</th><th>Estado</th><th><span style="position:absolute;left:-9999px">Ação</span></th></tr></thead><tbody>
+          <tr><td><strong>Corrigir comprovante de renda</strong><div class="muted">Foto desfocada</div></td><td>Scholars 2027</td><td><strong style="color:var(--fix)">13/11</strong><div class="muted">7 dias</div></td><td><span class="st s-fix"><i data-i="alert"></i>Corrigir</span></td><td><a class="btn b-danger" href="#">Resolver</a></td></tr>
+          <tr><td><strong>Enviar comprovante de matrícula</strong><div class="muted">Pedido em 04/11</div></td><td>Scholars 2027</td><td><strong>20/11</strong><div class="muted">14 dias</div></td><td><span class="st s-todo"><i data-i="clock"></i>Para fazer</span></td><td><a class="btn b-primary" href="#">Enviar</a></td></tr>
+        </tbody></table></section>
+      <section class="panel"><h2>Behring Scholars 2027 <a href="#" style="font-size:14px;font-weight:500">Abrir</a></h2>
+        <ol class="steps"><li class="ok"><span class="d">✓</span>Inscrição<span class="muted">28/10</span></li><li class="now"><span class="d">!</span><strong>Análise documental</strong><span class="st s-fix">1 correção</span></li><li><span class="d">3</span>Triagem<span class="muted">dez</span></li><li><span class="d">4</span>Entrevista<span class="muted">jan</span></li><li><span class="d">5</span>Resultado<span class="muted">fev</span></li></ol></section>
+    </div>
+    <section class="panel"><h2>Atividade recente</h2>
+      <table><tbody><tr><td style="width:110px" class="muted">05/11</td><td>Correção solicitada no comprovante de renda</td><td><span class="st s-fix">Corrigir</span></td></tr><tr><td class="muted">04/11</td><td>Histórico escolar aprovado</td><td><span class="st s-done">Aprovado</span></td></tr></tbody></table></section>
+  </div>
+</div>
+<script src="icons.js"></script>
+</body></html>

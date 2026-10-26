@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal do Aluno & Candidato — Fundação Behring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="app"></div>
+  <div id="live" class="sr-only" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script>
+    // Carrega o script de captura do Figma só quando a página é aberta para importação no Figma.
+    if (location.hash.includes('figmacapture=')) {
+      const s = document.createElement('script');
+      s.src = 'https://mcp.figma.com/mcp/html-to-design/capture.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+  </script>
+</body>
+</html>

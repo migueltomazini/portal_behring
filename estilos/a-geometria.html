@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estilo A — Geometria do B</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* Direção A: a forma do "B" do logo (lado reto + lado arredondado) vira a linguagem dos componentes. */
+  :root { --navy:#20165E; --green:#007036; --petrol:#00799E; --text:#3F3F46; --muted:#62626B; --bg:#F5F5F7; --line:#E3E3E8;
+          --fix:#B42318; --fix-bg:#FDECEA; --todo:#7A4F00; --todo-bg:#FFF4D6; --wait-bg:#EEF0F8; --scholars:#0766FC; --academy:#7A4DB8; }
+  * { box-sizing:border-box } body { margin:0; font-family:"DM Sans",sans-serif; color:var(--text); background:var(--bg); font-size:16px; line-height:1.5 }
+  .ico { width:20px; height:20px; flex:none } .ico-l { width:24px; height:24px; flex:none }
+  header { background:#fff; }
+  .bar { max-width:1200px; margin:0 auto; padding:0 24px; height:76px; display:flex; align-items:center; gap:24px }
+  .bar img { height:40px }
+  nav { margin-left:auto; display:flex; gap:4px }
+  nav a { color:var(--text); text-decoration:none; font-weight:500; padding:10px 16px; min-height:44px; display:flex; align-items:center; gap:6px; border-radius:4px 22px 22px 4px }
+  nav a.on { background:var(--navy); color:#fff }
+  nav .n { background:var(--fix); color:#fff; font-size:12px; font-weight:700; border-radius:999px; padding:0 7px }
+  .stripe { height:6px; background:linear-gradient(90deg,#00B22F,#00A2D3 50%,#20165E) }
+  main { max-width:1200px; margin:0 auto; padding:32px 24px 48px }
+  /* Hero com o contorno do B, como nas páginas do site */
+  .hero { position:relative; background:var(--navy); color:#fff; border-radius:8px 120px 120px 8px; padding:36px 48px; overflow:hidden; display:flex; align-items:center; gap:32px; margin-bottom:28px }
+  .hero h1 { margin:0 0 4px; font-size:36px; color:#fff }
+  .hero p { margin:0; color:#D6D3EE; font-size:18px }
+  .hero svg.b { position:absolute; right:60px; top:-30px; width:220px; height:270px; opacity:.35 }
+  .hero .urgent { margin-left:auto; position:relative; background:#fff; color:var(--text); border-radius:4px 40px 40px 4px; padding:16px 20px 16px 22px; display:flex; gap:16px; align-items:center; max-width:520px; border-left:6px solid var(--fix) }
+  .hero .urgent strong { color:var(--fix); display:block }
+  .btn { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 22px; font:inherit; font-weight:700; border:0; cursor:pointer; text-decoration:none; border-radius:4px 22px 22px 4px; white-space:nowrap }
+  .b-primary { background:var(--navy); color:#fff } .b-danger { background:var(--fix); color:#fff } .b-ghost { background:#fff; color:var(--petrol); box-shadow:inset 0 0 0 2px var(--petrol) }
+  .grid { display:grid; grid-template-columns:2fr 1fr; gap:24px }
+  h2 { font-size:20px; color:var(--navy); margin:0 0 12px; display:flex; align-items:center; gap:10px }
+  h2::before { content:""; width:14px; height:18px; background:linear-gradient(#00B22F,#00A2D3); border-radius:2px 9px 9px 2px }
+  .card { background:#fff; border-radius:4px 28px 28px 4px; padding:20px 24px; margin-bottom:12px; box-shadow:0 1px 3px rgba(32,22,94,.08) }
+  .task { display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center; border-left:6px solid var(--todo) }
+  .task.fix { border-left-color:var(--fix) }
+  .task h3 { margin:0; font-size:17px; color:var(--navy) } .meta { color:var(--muted); font-size:14px } .due { font-size:14px; font-weight:700 }
+  .badge { width:44px; height:44px; border-radius:4px 22px 22px 4px; display:grid; place-items:center }
+  .fix .badge { background:var(--fix-bg); color:var(--fix) } .todo .badge { background:var(--todo-bg); color:var(--todo) }
+  .status { white-space:nowrap; display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; padding:3px 12px 3px 8px; border-radius:3px 14px 14px 3px }
+  .s-fix { background:var(--fix-bg); color:var(--fix) } .s-done { background:#E6F4EA; color:var(--green) }
+  .empty { border:2px dashed #B9B9C3; border-radius:4px 28px 28px 4px; padding:16px 20px; color:var(--muted) }
+  .proc { border-left:6px solid var(--scholars) } .proc .prog { font-size:13px; font-weight:700; color:var(--scholars); letter-spacing:.04em; text-transform:uppercase }
+  .tl { display:flex; margin:16px 0 8px; padding:0; list-style:none }
+  .tl li { flex:1; text-align:center; font-size:12px; position:relative; color:var(--muted) }
+  .tl li::before { content:""; position:absolute; top:11px; left:-50%; width:100%; height:3px; background:var(--line) } .tl li:first-child::before { display:none }
+  .tl li.d::before, .tl li.c::before { background:var(--green) }
+  .tl .dot { width:24px; height:24px; margin:0 auto 4px; position:relative; border-radius:3px 12px 12px 3px; background:#fff; border:3px solid #9A9AA5; display:grid; place-items:center; color:#fff; font-weight:700; font-size:13px }
+  .tl .d .dot { background:var(--green); border-color:var(--green) } .tl .c .dot { background:#F5B800; border-color:var(--todo); color:var(--navy) }
+  .tl .d, .tl .c { color:var(--navy); font-weight:700 }
+  .news li { display:flex; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid var(--line) } .news li:last-child { border:0 }
+  .news { list-style:none; margin:0; padding:0 } a { color:var(--petrol) }
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <img src="../assets/logo-fundacao-behring.png" alt="Fundação Behring">
+  <span style="color:var(--muted);font-weight:500;border-left:1px solid var(--line);padding-left:16px">Portal do Aluno &amp; Candidato</span>
+  <nav aria-label="Principal"><a class="on" href="#"><i data-i="home"></i>Início</a><a href="#">Programas</a><a href="#">Documentos <span class="n">3</span></a><a href="#">Avisos <span class="n">6</span></a><a href="#">Perfil</a></nav>
+</div><div class="stripe"></div></header>
+<main>
+  <section class="hero">
+    <svg class="b" viewBox="0 0 100 122" fill="none" stroke="#fff" stroke-width="1.2" aria-hidden="true"><path d="M2 2h48a29 29 0 0 1 0 58 29 29 0 0 1 0 60H2z"/></svg>
+    <div><h1>Olá, Kira!</h1><p>Hoje é 06/11/2026. Você tem 1 item urgente.</p></div>
+    <div class="urgent"><i data-i="alert" class="ico-l"></i><div><strong>Comprovante de renda precisa de correção</strong><span class="meta">Behring Scholars 2027 · até 13/11 — faltam 7 dias</span></div><a class="btn b-danger" href="#">Resolver</a></div>
+  </section>
+  <div class="grid">
+    <div>
+      <h2>Para fazer agora <span class="meta">(2)</span></h2>
+      <article class="card task fix"><span class="badge"><i data-i="alert" class="ico-l"></i></span><div><h3>Corrigir comprovante de renda familiar</h3><div class="meta">Behring Scholars 2027 · A foto enviada está desfocada</div><div class="due" style="color:var(--fix)">até 13/11 — faltam 7 dias</div></div><a class="btn b-danger" href="#">Resolver</a></article>
+      <article class="card task todo"><span class="badge"><i data-i="upload" class="ico-l"></i></span><div><h3>Enviar comprovante de matrícula</h3><div class="meta">Behring Scholars 2027 · Pedido para a análise documental</div><div class="due" style="color:var(--todo)">até 20/11 — faltam 14 dias</div></div><a class="btn b-primary" href="#">Enviar</a></article>
+      <h2 style="margin-top:28px">Aguardando a Fundação <span class="meta">(0)</span></h2>
+      <div class="empty">Nenhum item em análise no momento.</div>
+    </div>
+    <div>
+      <h2>Seus processos</h2>
+      <article class="card proc"><div class="prog">Behring Scholars</div><div style="display:flex;align-items:center;gap:8px;justify-content:space-between"><h3 style="margin:0;color:var(--navy)">Candidatura 2027</h3><span class="status s-fix"><i data-i="alert"></i>Ação necessária</span></div>
+        <ol class="tl"><li class="d"><span class="dot">✓</span>Inscrição</li><li class="c"><span class="dot">!</span>Análise</li><li><span class="dot"></span>Triagem</li><li><span class="dot"></span>Entrevista</li><li><span class="dot"></span>Resultado</li></ol>
+        <a class="btn b-ghost" href="#">Abrir processo</a></article>
+      <article class="card" style="border-left:6px solid var(--academy)"><div class="prog" style="font-size:13px;font-weight:700;color:var(--academy);text-transform:uppercase;letter-spacing:.04em">Behring Academy</div><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;color:var(--navy)">2024–2026</h3><span class="status s-done"><i data-i="check"></i>Concluído</span></div></article>
+      <h2 style="margin-top:28px">Novidades</h2>
+      <div class="card"><ul class="news"><li><i data-i="megaphone" class="ico-l"></i><div><strong>Behring Founders 2027</strong><div class="meta">Inscrições até 30/11/2026</div></div></li><li><i data-i="calendar" class="ico-l"></i><div><strong>Behring Academy 2027</strong><div class="meta">Abre em 01/02/2027</div></div></li></ul></div>
+    </div>
+  </div>
+</main>
+<script src="icons.js"></script>
+</body></html>

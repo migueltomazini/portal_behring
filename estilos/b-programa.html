@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estilo B — Cor do programa</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+  /* Direção B: cada programa assume sua cor do site (Scholars azul, Academy roxo, Founders preto),
+     com tipografia grande e as "barras" ciano das páginas de programa. */
+  :root { --scholars:#0766FC; --scholars-dark:#0047B3; --cyan:#6AE6FA; --navy:#20165E; --text:#1F1F24; --muted:#5C5C66;
+          --fix:#B42318; --fix-bg:#FDECEA; --todo:#7A4F00; --todo-bg:#FFF4D6; --green:#007036; }
+  * { box-sizing:border-box } body { margin:0; font-family:"DM Sans",sans-serif; color:var(--text); background:#fff; font-size:16px; line-height:1.5 }
+  .ico { width:20px; height:20px; flex:none } .ico-l { width:26px; height:26px; flex:none }
+  .top { background:var(--scholars); color:#fff; position:relative; overflow:hidden }
+  .bar { max-width:1200px; margin:0 auto; padding:0 24px; height:76px; display:flex; align-items:center; gap:24px }
+  .bar img { height:40px }
+  nav { margin-left:auto; display:flex; gap:6px }
+  nav a { color:#fff; text-decoration:none; font-weight:500; padding:10px 14px; min-height:44px; display:flex; align-items:center; gap:6px }
+  nav a.on { box-shadow:inset 0 -3px 0 #fff; font-weight:700 }
+  nav .n { background:#fff; color:var(--scholars-dark); font-size:12px; font-weight:800; border-radius:999px; padding:0 7px }
+  .hero { max-width:1200px; margin:0 auto; padding:40px 24px 56px; display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:end; position:relative }
+  .hero h1 { font-size:56px; line-height:1.02; font-weight:800; margin:0 0 12px; letter-spacing:-.02em }
+  .hero p { font-size:20px; margin:0; color:#fff }
+  .bars span { position:absolute; height:14px; background:var(--cyan) } .bars span.w { background:#fff }
+  .urgent { background:#fff; color:var(--text); padding:24px; position:relative; z-index:1; box-shadow:12px 12px 0 var(--cyan) }
+  .urgent .k { color:var(--fix); font-weight:800; font-size:13px; letter-spacing:.06em; text-transform:uppercase; display:flex; gap:6px; align-items:center }
+  .urgent p { color:var(--muted); font-size:16px }
+  .urgent h2 { font-size:24px; margin:6px 0 4px; color:var(--text) }
+  .btn { display:inline-flex; align-items:center; gap:8px; min-height:48px; padding:0 24px; font:inherit; font-weight:800; border:0; text-decoration:none; cursor:pointer }
+  .b-danger { background:var(--fix); color:#fff } .b-dark { background:var(--text); color:#fff } .b-line { box-shadow:inset 0 0 0 2px var(--text); color:var(--text); background:#fff }
+  main { max-width:1200px; margin:0 auto; padding:40px 24px 56px }
+  .bento { display:grid; grid-template-columns:repeat(6,1fr); gap:16px }
+  .tile { background:#F4F6FB; padding:24px; position:relative }
+  .tile h2 { font-size:14px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 14px; color:var(--muted) }
+  .t-tasks { grid-column:span 4; grid-row:span 2; background:#fff; box-shadow:inset 0 0 0 2px #E2E5EE }
+  .t-stat { grid-column:span 1; } .t-stat .num { font-size:44px; font-weight:800; line-height:1; color:var(--text) }
+  .t-proc { grid-column:span 2; background:var(--scholars); color:#fff } .t-proc h2 { color:#fff }
+  .t-academy { grid-column:span 3; background:#7A4DB8; color:#fff } .t-academy h2 { color:#EADFF7 }
+  .t-news { grid-column:span 2; background:#111; color:#fff } .t-news h2 { color:#C9C9CF } .t-news a { color:#fff }
+  .task { display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center; padding:16px 0; border-bottom:2px solid #EEF0F5 } .task:last-child { border:0 }
+  .task h3 { margin:0; font-size:18px } .meta { font-size:14px; color:var(--muted) }
+  .chip { display:inline-flex; gap:6px; align-items:center; font-weight:800; font-size:13px; padding:3px 10px; text-transform:uppercase; letter-spacing:.04em }
+  .c-fix { background:var(--fix-bg); color:var(--fix) } .c-todo { background:var(--todo-bg); color:var(--todo) }
+  .tl { display:flex; gap:6px; margin:14px 0; padding:0; list-style:none } .tl li { flex:1; height:8px; background:rgba(255,255,255,.35) } .tl li.d { background:#fff } .tl li.c { background:var(--cyan) }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="bars" aria-hidden="true"><span style="width:180px;top:120px;right:380px"></span><span class="w" style="width:90px;top:150px;right:330px"></span><span style="width:40px;top:150px;right:280px"></span><span style="width:120px;top:96px;left:0"></span><span class="w" style="width:60px;top:126px;left:40px"></span></div>
+  <div class="bar"><img src="../assets/logo-fundacao-behring-branco.png" alt="Fundação Behring">
+    <nav aria-label="Principal"><a class="on" href="#">Início</a><a href="#">Programas</a><a href="#">Documentos <span class="n">3</span></a><a href="#">Avisos <span class="n">6</span></a><a href="#">Perfil</a></nav></div>
+  <section class="hero">
+    <div><p style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px;margin-bottom:12px">Portal do Aluno &amp; Candidato</p><h1>Olá, Kira.<br>Falta pouco.</h1><p>Sua candidatura ao Behring Scholars 2027 está na análise documental.</p></div>
+    <div class="urgent"><div class="k"><i data-i="alert"></i>Ação necessária · faltam 7 dias</div><h2>Corrija o comprovante de renda</h2><p class="meta" style="margin:0 0 16px">A foto enviada está desfocada. Envie um novo arquivo até 13/11.</p><a class="btn b-danger" href="#">Resolver agora <i data-i="right"></i></a></div>
+  </section>
+</div>
+<main>
+  <div class="bento">
+    <section class="tile t-tasks"><h2>Para fazer agora</h2>
+      <div class="task"><span class="chip c-fix"><i data-i="alert"></i>Corrigir</span><div><h3>Comprovante de renda familiar</h3><div class="meta">Behring Scholars 2027 · até 13/11</div></div><a class="btn b-dark" href="#">Resolver</a></div>
+      <div class="task"><span class="chip c-todo"><i data-i="clock"></i>Enviar</span><div><h3>Comprovante de matrícula</h3><div class="meta">Behring Scholars 2027 · até 20/11</div></div><a class="btn b-line" href="#">Enviar</a></div>
+      <div class="task"><span class="chip" style="background:#EEF0F8;color:var(--navy)"><i data-i="hourglass"></i>Fundação</span><div><h3>Nada aguardando análise</h3><div class="meta">Quando você enviar algo, aparece aqui</div></div></div>
+    </section>
+    <section class="tile t-stat"><h2>Pendências</h2><div class="num">2</div><div class="meta">1 urgente</div></section>
+    <section class="tile t-stat"><h2>Prazo</h2><div class="num">7<span style="font-size:20px"> dias</span></div><div class="meta">13/11/2026</div></section>
+    <section class="tile t-proc"><h2>Behring Scholars 2027</h2><strong style="font-size:22px">Análise documental</strong><ol class="tl" aria-label="Etapa 2 de 5"><li class="d"></li><li class="c"></li><li></li><li></li><li></li></ol><div>Etapa 2 de 5 · <a href="#" style="color:#fff">Abrir processo</a></div></section>
+    <section class="tile t-academy"><h2>Behring Academy</h2><strong style="font-size:22px">2024–2026 · Concluído</strong><p style="margin:8px 0 0">Seu histórico continua disponível.</p></section>
+    <section class="tile t-news" style="grid-column:span 3"><h2>Novidades</h2><strong style="font-size:20px">Behring Founders 2027</strong><p style="margin:6px 0 0">Inscrições até 30/11. <a href="#">Ver programa</a></p></section>
+  </div>
+</main>
+<script src="icons.js"></script>
+</body></html>
